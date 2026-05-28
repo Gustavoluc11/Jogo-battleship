@@ -23,6 +23,11 @@ C = {
     'water_a'   : ( 22,  82, 140),
     'water_b'   : ( 18,  70, 122),
     'grid_line' : ( 15,  58, 100),
+    # --- Cores das Ilhas ---
+    'sand'      : (235, 210, 140),  # Praia / Bordas
+    'grass'     : ( 55, 140,  75),  # Interior verde
+    'stone'     : (110, 115, 125),  # Centro rochoso / Pico
+    # -----------------------
     'ui_bg'     : ( 10,  14,  22),
     'ui_panel'  : ( 20,  26,  40),
     'ui_border' : ( 44,  56,  84),

@@ -85,22 +85,45 @@ class Renderer:
     # ═══════════════════════════════════════════════════════════════════════════
     # Mundo
     # ═══════════════════════════════════════════════════════════════════════════
+    def draw_world(self, visible: set):
+        """Renderiza tiles do viewport (água e ilhas) + NPCs visíveis."""
+        g  = self.g
+        t  = self.tile
+        gs = g.grid_size
+        self.screen.fill(C['ui_bg'])
+
+        col0 = max(0, int(self.cam_x) - 1)
+        row0 = max(0, int(self.cam_y) - 1)
+        col1 = min(gs, col0 + int(self._vp_w() / t) + 3)
+        row1 = min(gs, row0 + int(self._vp_h() / t) + 3)
+
+        _island_variants = {
+            'sand' : [(230, 205, 130), (240, 215, 148), (220, 198, 118)],
+            'grass': [( 48, 130,  65), ( 60, 148,  78), ( 42, 118,  58)],
+            'stone': [(100, 106, 115), (118, 124, 135), ( 88,  94, 105)],
+        }
+
+        for gy in range(row0, row1):
+            for gx in range(col0, col1):
+                sx, sy = self.w2s(gx, gy)
+                terrain = g.map_grid[gy][gx]
+                if terrain == 'water':
+                    col = C['water_a'] if (gx + gy) % 2 == 0 else C['water_b']
+                    pygame.draw.rect(self.screen, col, (sx, sy, t, t))
+                    pygame.draw.rect(self.screen, C['grid_line'], (sx, sy, t, t), 1)
+                else:
+                    variants = _island_variants[terrain]
+                    col = variants[(gx * 3 + gy * 7) % len(variants)]
+                    pygame.draw.rect(self.screen, col, (sx, sy, t, t))
+                    border_col = (200, 185, 110) if terrain == 'sand' else \
+                                 ( 35, 100,  50) if terrain == 'grass' else \
+                                 ( 70,  75,  85)
+                    pygame.draw.rect(self.screen, border_col, (sx, sy, t, t), 1)
+
+        self.draw_npcs(visible)
+
     def draw_water(self):
-        """Desenha água e grade. Respeita tile atual (com zoom)."""
-        t = self.tile
-        vis_cols = int(self._vp_w() / t) + 2
-        vis_rows = int(self._vp_h() / t) + 2
-        for row in range(vis_rows):
-            for col in range(vis_cols):
-                wx = int(self.cam_x) + col
-                wy = int(self.cam_y) + row
-                sx, sy = self.w2s(wx, wy)
-                col_c = C['water_a'] if (wx + wy) % 2 == 0 else C['water_b']
-                pygame.draw.rect(self.screen, col_c, (sx, sy, t + 1, t + 1))
-                pygame.draw.rect(self.screen, C['grid_line'], (sx, sy, t, t), 1)
-                if wx % 10 == 0 and wy % 10 == 0:
-                    lbl = self.g.font_xs.render(f"{wx},{wy}", True, C['grid_line'])
-                    self.screen.blit(lbl, (sx + 2, sy + 2))
+        pass  # legado — use draw_world
 
     def draw_fog(self, visible):
         t  = self.tile
