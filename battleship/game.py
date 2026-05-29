@@ -495,8 +495,7 @@ class Game:
         r.draw_fog(visible)
 
         self.particles = [p for p in self.particles if p.life > 0]
-        for p in self.particles:
-            p.update()
+        # O renderer já faz o update e o draw juntos!
         r.draw_particles(self.particles)
 
         r.draw_sidebar()

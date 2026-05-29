@@ -375,7 +375,7 @@ class Fish(NPC):
                 self._pick_target()
 
     def money_reward(self):
-        return 25
+        return 50
 
     def world_tiles(self):
         # Peixe sempre anda com offset +0.5 (centrado no tile).
@@ -395,8 +395,8 @@ class Fish(NPC):
 class NPCShip(NPC):
     def __init__(self, gx, gy):
         super().__init__(gx, gy)
-        self.hp     = 4
-        self.max_hp = 4
+        self.hp     = 1
+        self.max_hp = 1
         self.speed  = random.uniform(0.03, 0.10)
         self.timer  = 0
 
