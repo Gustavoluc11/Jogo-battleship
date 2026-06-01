@@ -61,6 +61,7 @@ tabuleiroComputador = [
 
 #  Começa pelo maior barco
 tamanhoBarco = 5
+tamanhoBarcoPC = 5
 # Letras numa lista para conmseguir o número da coordenada
 letrasLinhas = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 
@@ -88,6 +89,7 @@ while tamanhoBarco > 0:
         orientacaoBarco = input(f"Digite a orientação do barco V ou H: ").upper()
         if orientacaoBarco not in ['V','H']:
             print ('Erro: Orientação inválida! Use V ou H.')
+            continue
     else:
         orientacaoBarco = "H"
 
@@ -132,7 +134,7 @@ while tamanhoBarco > 0:
     tamanhoBarco -= 1
     os.system('cls' if os.name == 'nt' else 'clear') # Limpa o terminal
 
-while tamanhoBarco > 0:
+while tamanhoBarcoPC > 0:
 
     rowBarco = randint(1, 10)
     columBarco = randint(1,10)
@@ -140,15 +142,15 @@ while tamanhoBarco > 0:
     orientacao = ['V','H']
     x = randint(0,1)
     
-    if tamanhoBarco > 1:
+    if tamanhoBarcoPC > 1:
         orientacaoBarco = orientacao[x]
     else:
         orientacaoBarco = "H"
 
     # Se passar das bordas da matriz, para
-    if orientacaoBarco == 'V' and (rowBarco + tamanhoBarco - 1) > 10:
+    if orientacaoBarco == 'V' and (rowBarco + tamanhoBarcoPC - 1) > 10:
         continue
-    elif orientacaoBarco == 'H' and (columBarco + tamanhoBarco - 1) > 10:
+    elif orientacaoBarco == 'H' and (columBarco + tamanhoBarcoPC - 1) > 10:
         continue
     
     
@@ -157,7 +159,7 @@ while tamanhoBarco > 0:
     checaCol = columBarco
     podePosicionar = True
 
-    for j in range(tamanhoBarco):
+    for j in range(tamanhoBarcoPC):
         if tabuleiroComputador[checaRow][checaCol] == '■':
             podePosicionar = False
             break # Se achou um único impedimento, já podemos parar de checar
@@ -173,14 +175,14 @@ while tamanhoBarco > 0:
         continue # Volta para o início do while, pedindo o mesmo barco de novo
     
     # Se passou em tudo (Limites E Sobreposição), desenha o barco
-    for j in range(tamanhoBarco):
+    for j in range(tamanhoBarcoPC):
         tabuleiroComputador[rowBarco] [columBarco] = '■'
         if orientacaoBarco == 'V':
             rowBarco += 1
         else:
             columBarco += 1
 
-    tamanhoBarco -= 1
+    tamanhoBarcoPC -= 1
 
 for k in range(11):
     print (tabuleiroComputador[k])
