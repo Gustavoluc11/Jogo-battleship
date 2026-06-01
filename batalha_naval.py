@@ -83,11 +83,9 @@ while tamanhoBarco > 0:
     # Verifica se o barco sai para fora das bordas do tabuleiro
     if orientacaoBarco == 'V' and (rowBarco + tamanhoBarco - 1) > 10:
         print("Erro: O barco ultrapassa o limite inferior do tabuleiro!")
-        sleep(2)
         continue
     elif orientacaoBarco == 'H' and (columBarco + tamanhoBarco - 1) > 10:
         print("Erro: O barco ultrapassa o limite lateral direito!")
-        sleep(2)
         continue
         
     # Variáveis temporárias para não estragar as originais durante o teste
@@ -109,7 +107,6 @@ while tamanhoBarco > 0:
     # Se encontrou um barco no caminho, cancela o posicionamento
     if not podePosicionar:
         print("Erro: Já existe um barco bloqueando esse caminho! Escolha outra posição.")
-        sleep(2)
         continue # Volta para o início do while, pedindo o mesmo barco de novo
     
     # Se passou em tudo (Limites e Sobreposição), desenha o barco
