@@ -194,9 +194,9 @@ while vidaJogador > 0 and vidaPC > 0:
     for c in range (11):
         print (tabuleiroFeedbackJogador[c])
 
-    tiroRow = input(f"Digite a linha de onde quer atirar: ").upper()
-    if tiroRow in letrasLinhas:
-        rowTiro = letrasLinhas.index(tiroRow) + 1
+    letraTiro = input(f"Digite a linha de onde quer atirar: ").upper()
+    if letraTiro in letrasLinhas:
+        rowTiro = letrasLinhas.index(letraTiro) + 1
     else:
         print("Erro: Linha inválida! Escolha uma letra de A a J.")
         continue
