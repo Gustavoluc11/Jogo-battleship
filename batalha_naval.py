@@ -238,6 +238,7 @@ while vidaJogador > 0 and vidaPC > 0:
             tabuleiroFeedbackComputador[rowTiro][columTiro] = 'O' # Marca agua no tabuleiro de feedback
             turnoJogador = False
 
+        sleep(2.5) # Tempo para jogador ver se acertou ou não
         os.system('cls' if os.name == 'nt' else 'clear') # Limpa o terminal para a proxima rodada
 
     else:
