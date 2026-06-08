@@ -52,7 +52,9 @@ class Game:
         self.steering = 0.0
         self.speed    = 2
 
+
     # ─────────────────────── Geração de ilhas ─────────────────────────────────
+
 
     def generate_islands(self):
         gs = self.grid_size
@@ -91,7 +93,9 @@ class Game:
                     elif dist < radius:        self.map_grid[gy][gx] = 'sand'
             placed += 1
 
+
     # ─────────────────────── Init partida ─────────────────────────────────────
+
 
     def _init_game(self, map_key=DEFAULT_MAP):
         self.grid_size = MAP_SIZES[map_key]
@@ -144,7 +148,9 @@ class Game:
         s.modules.append(Module('radar',   rx=2, ry=1))   # canto dir baixo
         return s
 
+
     # ─────────────────────── Zoom & Câmera ────────────────────────────────────
+
 
     def _set_zoom(self, factor):
         self.zoom = max(0.4, min(2.5, factor))
@@ -174,14 +180,18 @@ class Game:
     def _in_vp(self, sx, sy):
         return 0 <= sx < self._vp_w() and 0 <= sy < self._vp_h()
 
+
     # ─────────────────────── Log ──────────────────────────────────────────────
+
 
     def _log(self, msg):
         self.messages.append(msg)
         if len(self.messages) > 7:
             self.messages.pop(0)
 
+
     # ─────────────────────── Visibilidade ─────────────────────────────────────
+
 
     def _visible_tiles(self) -> set:
         if not self.ships:
@@ -195,14 +205,18 @@ class Game:
                 for dy in range(-r - 1, r + 2)
                 if dx * dx + dy * dy <= r2}
 
+
     # ─────────────────────── Explosão ─────────────────────────────────────────
+
 
     def _explode_at_tile(self, wx, wy):
         sx, sy = self.w2s(wx + 0.5, wy + 0.5)
         for _ in range(28):
             self.particles.append(Particle(sx, sy))
 
+
     # ─────────────────────── Colisão ──────────────────────────────────────────
+
 
     def _check_island_collision(self, ship: Ship):
         hit_tiles = set()
@@ -232,7 +246,9 @@ class Game:
                 self._explode_at_tile(wx, wy)
             self._check_win()
 
+
     # ─────────────────────── Mecânica ─────────────────────────────────────────
+
 
     def _execute_move(self):
         ship = self.ships[self.turn]
@@ -308,7 +324,9 @@ class Game:
         if self.ships:
             self._ghost = self.ships[self.turn].preview_move(self.steering, self.speed)
 
+
     # ─────────────────────── NPCs ─────────────────────────────────────────────
+
 
     def _update_npcs(self):
         if self.phase == 'action':
@@ -320,7 +338,9 @@ class Game:
                 npc.update()
         self.npcs = [n for n in self.npcs if n.alive]
 
+
     # ─────────────────────── Eventos ──────────────────────────────────────────
+
 
     def handle_events(self):
         for e in pygame.event.get():
@@ -401,7 +421,9 @@ class Game:
                                 self._log("Dinheiro insuficiente!")
                             return
 
+
     # ─────────────────────── Render ───────────────────────────────────────────
+
 
     def draw(self):
         if self.state == 'menu':
@@ -428,7 +450,9 @@ class Game:
         r.draw_sidebar()
         r.draw_bottom()
 
+
     # ─────────────────────── Loop principal ───────────────────────────────────
+
 
     def run(self):
         while True:
