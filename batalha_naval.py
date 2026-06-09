@@ -279,5 +279,21 @@ else:
 
 # Tela de créditos
 sleep(2.5)
-print("Obrigado por jogar!")
-print('''\nJogo feito por:\nMateus Weiss Medeiros\nDaniel Godri Neto\nGustavo Gomes Luciano''')
+print("\n" + "=" * 50)
+print("🏴‍☠️  OBRIGADO POR JOGAR BATALHA NAVAL!  ⚓")
+print("=" * 50)
+
+print("""
+╔════════════════════════════════════════════╗
+║              CRÉDITOS DO JOGO              ║
+╠════════════════════════════════════════════╣
+║                                            ║
+║  👨‍💻        Mateus Weiss Medeiros          ║
+║  👨‍💻          Daniel Godri Neto            ║
+║  👨‍💻        Gustavo Gomes Luciano          ║
+║                                            ║
+║                                            ║
+╚════════════════════════════════════════════╝
+""")
+
+print("Até a próxima, comandante! 🚢")
