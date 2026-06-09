@@ -278,7 +278,9 @@ else:
     print("Que pena! O computador é o vencedor")
 
 # Tela de créditos
+
 sleep(2.5)
+
 print("\n" + "=" * 50)
 print("🏴‍☠️  OBRIGADO POR JOGAR BATALHA NAVAL!  ⚓")
 print("=" * 50)
@@ -288,9 +290,9 @@ print("""
 ║              CRÉDITOS DO JOGO              ║
 ╠════════════════════════════════════════════╣
 ║                                            ║
-║  👨‍💻        Mateus Weiss Medeiros          ║
-║  👨‍💻          Daniel Godri Neto            ║
-║  👨‍💻        Gustavo Gomes Luciano          ║
+║            Mateus Weiss Medeiros           ║
+║              Daniel Godri Neto             ║
+║            Gustavo Gomes Luciano           ║
 ║                                            ║
 ║                                            ║
 ╚════════════════════════════════════════════╝
